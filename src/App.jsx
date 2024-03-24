@@ -4,7 +4,7 @@ import NavBar from "./NavBar";
 import "./index.css";
 
 function App() {
-  return <div>
+  return <div className="roboto-regular">
     <NavBar />
     <Events />
   </div>;

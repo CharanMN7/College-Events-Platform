@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 import RaghuLogo from "./assets/images/raghu-logo.png";
-import ProfileLogo from "./assets/images/profile.png"
+import ProfileLogo from "./assets/icons/profile.svg"
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -47,13 +47,12 @@ const NavBar = () => {
         </div>
         <div className="hidden md:flex items-center">
           <a href="#" className="text-black text-xl font-medium mr-4 pr-2">About</a>
-          <a href="#" className="text-black text-xl font-medium"><img src={ProfileLogo} alt="Profile" className='rounded-full size-12'/></a>
+          <a href="#" className="text-black text-xl font-medium"><img src={ProfileLogo} alt="Profile" className='size-8'/></a>
         </div>
       </div>
       {isOpen && (
         <div className="md:hidden mt-4">
           <a href="#" className="block text-black py-2">About</a>
-          {/* <a href="#" className="block text-black py-2">Profile</a> */}
         </div>
       )}
     </nav>

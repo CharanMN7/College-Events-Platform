@@ -1,7 +1,7 @@
 import { EventDetails } from "./EventDetails";
 import Image from "./assets/images/raghu-logo.png";
-import FilterIcon from "./assets/icons/filter.png";
-import CancelIcon from "./assets/icons/x-mark.png";
+import FilterIcon from "./assets/icons/filter.svg";
+import CancelIcon from "./assets/icons/cancel.svg";
 
 export const Labels = ["Technical", "Sports", "Culturals"];
 
@@ -16,7 +16,7 @@ const Events = () => {
       ))}
       <div className="size-8">
         <button>
-          <img src={CancelIcon} alt="" />
+          <img src={CancelIcon} alt="" className="my-0 size-8"/>
         </button>
       </div>
       <div className="absolute right-3">
