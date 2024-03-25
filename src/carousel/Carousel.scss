@@ -1,0 +1,96 @@
+// Mixins
+@mixin blur() {
+  -webkit-backdrop-filter: blur(16px);
+  -moz-backdrop-filter: blur(16px);
+  -ms-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+// Carousel Styles
+.carousel {
+  display: flex;
+  overflow: hidden;
+  scroll-snap-type: x mandatory;
+}
+
+// Carousel Card styles
+.carousel-card {
+  box-sizing: border-box;
+  position: relative;
+  height: 90vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  div {
+    @include blur();
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1rem;
+    color: white;
+    width: max-content;
+    h2 {
+      font-size: 4rem;
+      font-weight: 700;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+  }
+  flex: 0 0 100%; /* Each item occupies 90vw */
+  scroll-snap-align: center;
+  margin-right: 10px; /* Adjust margin as needed */
+}
+
+.carousel-event-name,
+.carousel-one-liner {
+  margin: 0;
+}
+
+.carousel-event-date {
+  display: block;
+  font-size: 1.2rem;
+  span {
+    font-size: 1rem;
+  }
+}
+
+.carousel-event-name,
+.carousel-event-date {
+  margin-bottom: 0.4rem;
+}
+
+.carousel-event-name {
+  font-weight: bold;
+  font-size: 3rem;
+}
+
+.carousel-event-date {
+  width: max-content;
+}
+
+.carousel-event-tag {
+  position: absolute;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  top: 1rem;
+  right: 1rem;
+  span {
+    font-size: 1.2rem;
+  }
+}
+
+.navigation-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px; /* Adjust margin as needed */
+}
+
+.navigation-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #333;
+  margin: 0 5px;
+  cursor: pointer;
+}

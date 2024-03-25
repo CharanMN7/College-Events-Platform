@@ -1,13 +1,8 @@
-import "./App.css";
-import Events from "./Events";
-import NavBar from "./NavBar";
-import "./index.css";
+import Carousel from "./carousel/Carousel";
+// import CarouselCard from "./carousel/CarouselCard";
 
 function App() {
-  return <div className="roboto-regular">
-    <NavBar />
-    <Events />
-  </div>;
+  return <Carousel />;
 }
 
 export default App;
