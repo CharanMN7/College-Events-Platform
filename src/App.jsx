@@ -1,7 +1,8 @@
-import "./App.css";
+import Carousel from "./carousel/Carousel";
+// import CarouselCard from "./carousel/CarouselCard";
 
 function App() {
-  return <>Hello World!</>;
+  return <Carousel />;
 }
 
 export default App;
