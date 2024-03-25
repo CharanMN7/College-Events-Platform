@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import CarouselCard from "./CarouselCard";
-import "./CarouselCard.scss";
+import "./Carousel.scss";
 import data from "./carouselData.json";
 
 const Carousel = () => {

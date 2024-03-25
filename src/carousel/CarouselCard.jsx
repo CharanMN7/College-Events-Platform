@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import "./CarouselCard.scss";
+import "./Carousel.scss";
 import bgImg from "./background.jpg";
 
 const CarouselCard = ({ name, date, oneLiner, status }) => {
