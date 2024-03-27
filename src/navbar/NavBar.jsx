@@ -11,9 +11,8 @@ const NavBar = () => {
       setWidth(window.innerWidth);
     };
 
-    // adding event listener
+    // adding event listener to get the accurate width at real time
     window.addEventListener("resize", handleResize);
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
