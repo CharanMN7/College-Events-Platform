@@ -6,13 +6,6 @@
     "opsz" 24;
 }
 
-// @media (min-width: 769px) and (max-width: 1024px) {
-//   /* Styles for tablets */
-// }
-// @media (min-width: 1025px) {
-//   /* Styles for desktop computers */
-// }
-
 @mixin display-as-row() {
   display: flex;
   flex-direction: row;
@@ -74,5 +67,8 @@
     button {
       display: none;
     }
+  }
+  .navbar-mobile {
+    display: none;
   }
 }

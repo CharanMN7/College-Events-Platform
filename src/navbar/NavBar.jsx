@@ -1,22 +1,9 @@
 import raghuLogo from "./raghuLogo.jpg";
 import "./NavBar.scss";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const NavBar = () => {
-  const [width, setWidth] = useState(window.innerWidth);
   const [mobileView, setMobileView] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setWidth(window.innerWidth);
-    };
-
-    // adding event listener to get the accurate width at real time
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <header>
@@ -32,7 +19,7 @@ const NavBar = () => {
           <span className="material-symbols-rounded">menu</span>
         </button>
       </div>
-      {width <= 430 && mobileView && (
+      {mobileView && (
         <div className="navbar-mobile">
           <a href="#">About</a>
           <a href="#">Profile</a>
