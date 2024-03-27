@@ -19,7 +19,6 @@
 }
 
 .navbar {
-  @include blur();
   background-color: whitesmoke;
   @include display-as-row();
   align-items: center;
