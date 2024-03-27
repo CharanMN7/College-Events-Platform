@@ -15,4 +15,4 @@ const ClubSchema = new Schema ({
     ],
 }); 
 
-module.exports:ClubSchema;
+module.exports=ClubSchema;
