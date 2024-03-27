@@ -8,7 +8,7 @@ const ClubSchema = new Schema ({
     oneLiner:String,
     description:String,
     bnner:String,//link
-    organizers:{FirstName:String,LastName:String,Img:String,Title:String},
+    organizers:{firstName:String,lastName:String,img:String,title:String},
     logo:String,//link
     allEvents:[
         eventSchema,

@@ -11,8 +11,8 @@ const eventSchema =new Schema({
     mode:String,
     address:String,
     cludId:String,
-    speakers:{FirstName:String,LastName:String,Img:String,Title:String},
-    facilitators:{FirstName:String,LastName:String,Img:String,Title:String},
+    speakers:{firstName:String,lastName:String,img:String,title:String},
+    facilitators:{firstName:String,lastName:String,img:String,title:String},
     attendees:{FirstName:String,LastName:String,Email:String}
 }); 
 
