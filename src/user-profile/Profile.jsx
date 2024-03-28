@@ -1,5 +1,6 @@
 import "./Profile.scss";
 import bgImg from "../carousel/background.jpg";
+import data from "../carousel/carouselData.json";
 
 const Profile = () => {
   return (
@@ -14,8 +15,23 @@ const Profile = () => {
           </article>
         </div>
       </div>
-      <article>
+      <article className="events-attended">
         <h1>Events Attended</h1>
+        <div className="grid-container">
+          {data.data.map((e, index) => {
+            return (
+              <div key={index} className="grid-item">
+                <img
+                  src={bgImg}
+                  width={"100px"}
+                  height={"100px"}
+                  alt="Profile"
+                />
+                <p>{e.oneLiner}</p>
+              </div>
+            );
+          })}
+        </div>
       </article>
     </main>
   );
