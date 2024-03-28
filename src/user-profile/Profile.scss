@@ -1,9 +1,40 @@
 .profile {
+  background-color: rgb(73, 99, 99);
+  border-radius: 0.5rem;
+  padding: 1rem 0rem;
+  display: flex;
+  justify-content: center;
   div {
+    margin: 1.5rem 1rem;
     display: flex;
     flex-direction: row;
+    img {
+      border-radius: 50%;
+    }
   }
 }
 
 .profile-info {
+  margin-left: 1rem;
+  h1 {
+    font-size: xx-large;
+  }
+  p {
+    font-weight: 400;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .profile {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .profile-info {
+        p {
+          padding-top: 0.1rem;
+        }
+      }
+    }
+  }
 }
