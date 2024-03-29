@@ -1,7 +1,9 @@
 const express = require("express");
+const mongoose = require("mongoose");
+
 const app = express();
 app.use(express.json());
-const mongoose = require("mongoose");
-const path = require("path");
-const dbPath = path.join(__dirname);
+
+app.listen(3000);
+
 module.exports = app;
