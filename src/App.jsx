@@ -1,4 +1,4 @@
-import Carousel from "./carousel/Carousel";
+import Carousel from "./screens/home/carousel/Carousel";
 // import CarouselCard from "./carousel/CarouselCard";
 
 function App() {
