@@ -7,36 +7,87 @@
 }
 
 // Carousel Styles
+
+.carousel-container {
+  position: relative;
+}
+
+.scrollBtn {
+  position: absolute;
+  top: 35%;
+  color: #ffffff;
+  font-size: 3rem;
+  display: block;
+  text-anchor: middle;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.scrollBtn:hover {
+  cursor: pointer;
+}
+
+.scrollLeft {
+  left: 0;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.scrollRight {
+  right: 0;
+  padding-right: 0.2rem;
+  padding-left: 2rem;
+}
+
 .carousel {
   display: flex;
   overflow: hidden;
   scroll-snap-type: x mandatory;
+  height: 90vh;
 }
 
 // Carousel Card styles
 .carousel-card {
   box-sizing: border-box;
   position: relative;
-  height: 90vh;
+  height: 100%;
+
   padding: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    right: 0;
+    left: 0;
+  }
+
   div {
     @include blur();
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 1rem;
     padding: 1rem;
+    margin-bottom: 2rem;
     color: white;
     width: max-content;
+    max-width: 90%;
+
     h2 {
       font-size: 4rem;
       font-weight: 700;
     }
+
     p {
       font-size: 1.5rem;
     }
   }
+
   flex: 0 0 100%; /* Each item occupies 90vw */
   scroll-snap-align: center;
   margin-right: 10px; /* Adjust margin as needed */
@@ -80,17 +131,28 @@
   }
 }
 
+.nav-dots-box {
+  position: absolute;
+  width: 100%;
+  top: 80vh;
+}
+
 .navigation-dots {
   display: flex;
   justify-content: center;
-  margin-top: 10px; /* Adjust margin as needed */
+  background-color: #00000044;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 1rem auto;
+  @include blur();
 }
 
 .navigation-dots span {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #333;
+  background-color: white;
   margin: 0 5px;
   cursor: pointer;
 }
