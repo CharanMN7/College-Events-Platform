@@ -1,6 +1,7 @@
-import "./filterCardsDisplay.scss";
+import "./FilterCardsDisplay.scss";
 
-const filterCardsDisplay = () => {
+const FilterCardsDisplay = () => {
   return <div></div>;
 };
-export default filterCardsDisplay;
+
+export default FilterCardsDisplay;
