@@ -1,0 +1,32 @@
+@import "../../mixins.scss";
+.person-card {
+  @include flex(col, yes);
+  justify-content: center;
+  width: max-content;
+  max-width: 400px;
+
+  img {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+  }
+
+  figcaption {
+    text-align: center;
+    margin-top: 0.5rem;
+
+    span {
+      display: block;
+    }
+
+    .person-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .person-title {
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+}
