@@ -14,7 +14,7 @@
 
 .scrollBtn {
   position: absolute;
-  top: 32%;
+  top: 40%;
   color: #ffffff;
   font-size: 3rem;
   display: block;
@@ -40,10 +40,11 @@
 }
 
 .carousel {
+  margin-top: -9vh;
   display: flex;
   overflow: hidden;
   scroll-snap-type: x mandatory;
-  height: 90vh;
+  height: 100vh;
 }
 
 // Carousel Card styles
@@ -88,9 +89,9 @@
     }
   }
 
-  flex: 0 0 100%; /* Each item occupies 90vw */
+  flex: 0 0 100%;
   scroll-snap-align: center;
-  margin-right: 10px; /* Adjust margin as needed */
+  margin-right: 10px;
 }
 
 .carousel-event-name,
@@ -124,7 +125,7 @@
   position: absolute;
   text-transform: capitalize;
   font-size: 1.5rem;
-  top: 1rem;
+  top: 15vh;
   right: 1rem;
   span {
     font-size: 1.2rem;
@@ -134,7 +135,7 @@
 .nav-dots-box {
   position: absolute;
   width: 100%;
-  top: 80vh;
+  top: 92vh;
 }
 
 .navigation-dots {
