@@ -1,8 +1,16 @@
-import Carousel from "./screens/home/carousel/Carousel";
-// import CarouselCard from "./carousel/CarouselCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EventPage from "./screens/eventPage/EventPage";
+import Home from "./screens/home/Home";
 
 function App() {
-  return <Carousel />;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/event" element={<EventPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
