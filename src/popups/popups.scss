@@ -1,0 +1,57 @@
+@import "../mixins.scss";
+// RSVP form styles
+
+.rsvp-form {
+  padding: 2rem;
+  position: absolute;
+  margin: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 0 2rem #00000022;
+  @include flex(col, no);
+  align-items: center;
+
+  span {
+    color: rgb(90, 0, 0);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  input {
+    font-size: 1rem;
+    margin: 0.5rem auto;
+    padding: 0.5rem;
+    border: 1px solid black;
+    border-radius: 0.5rem;
+  }
+
+  input:focus {
+    border: 1px solid rgb(0, 0, 96);
+    outline: none;
+  }
+
+  button {
+    width: fit-content;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    border: 1px solid rgb(18, 189, 2);
+    color: rgb(18, 189, 2);
+    background-color: #ffffff22;
+    cursor: pointer;
+    margin-top: 0.5rem;
+  }
+
+  button:hover {
+    background-color: rgba(18, 189, 2, 0.1);
+  }
+
+  button:active {
+    background-color: rgba(5, 59, 0, 0.1);
+  }
+}
