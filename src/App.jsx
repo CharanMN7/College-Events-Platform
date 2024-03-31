@@ -1,13 +1,15 @@
-import Carousel from "./carousel/Carousel";
-import NavBar from "./navbar/NavBar";
-// import CarouselCard from "./carousel/CarouselCard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EventPage from "./screens/eventPage/EventPage";
+import Home from "./screens/home/Home";
 
 function App() {
   return (
-    <div>
-      <NavBar />
-      <Carousel />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/event" element={<EventPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

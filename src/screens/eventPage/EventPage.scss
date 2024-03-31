@@ -1,0 +1,101 @@
+@import "../../mixins.scss";
+
+// Event Page styles
+
+.event-page {
+  max-width: 900px;
+  padding: 4rem;
+  margin: auto;
+  h3 {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+}
+
+.event-banner {
+  width: 100%;
+  height: 375px;
+  object-fit: cover;
+  object-position: middle;
+  display: block;
+  border-radius: 1rem;
+}
+
+.event-name {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 0;
+  margin-top: 1rem;
+}
+
+.event-one-liner {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.date-rsvp {
+  padding: 0.8rem 1rem;
+  border: 1px solid rgb(189, 124, 2);
+  color: rgb(189, 124, 2);
+  font-size: 1.2rem;
+  font-weight: 500;
+  background-color: rgba(192, 96, 0, 0.1);
+  border-radius: 3rem;
+  @include flex(row, no);
+  align-items: center;
+  justify-content: space-between;
+}
+
+.event-date {
+  display: flex;
+  align-items: center;
+
+  span {
+    // font-size: 0.9rem;
+    display: inline-block;
+    margin-right: 0.4rem;
+  }
+}
+
+.event-rsvp {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid rgb(189, 124, 2);
+  color: rgb(189, 124, 2);
+  background-color: #ffffff22;
+  cursor: pointer;
+}
+
+.event-rsvp:hover {
+  background-color: rgba(255, 153, 0, 0.1);
+}
+
+.event-rsvp:active {
+  background-color: rgba(192, 96, 0, 0.1);
+}
+
+.event-tag {
+  @include tag-style(techTag);
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.event-about {
+  margin-bottom: 1rem;
+}
+
+// Event Ppl styles
+.event-ppl {
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.ppl-list {
+  @include flex(row, yes);
+  width: fit-content;
+}
