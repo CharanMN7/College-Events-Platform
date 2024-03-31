@@ -29,6 +29,26 @@ body {
   @include tag-style(live);
 }
 
+.tech-tag {
+  @include tag-style(techTag);
+}
+
+.date-dark {
+  @include tag-style-dark(date);
+}
+
+.upcoming-dark {
+  @include tag-style-dark(upcoming);
+}
+
+.completed-dark {
+  @include tag-style-dark(completed);
+}
+
+.live-dark {
+  @include tag-style-dark(live);
+}
+
 /*
 ===============
 == CSS Rules ==
