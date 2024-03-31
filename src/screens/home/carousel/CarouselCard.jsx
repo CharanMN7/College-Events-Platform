@@ -1,18 +1,12 @@
 /* eslint-disable react/prop-types */
 import "./Carousel.scss";
-import bgImg from "./background.jpg";
 
-const CarouselCard = ({ name, date, oneLiner, status }) => {
+const CarouselCard = ({ name, date, oneLiner, status, bgImg }) => {
   const eventTagClass = `carousel-event-tag ${status}`;
+  const img = `${bgImg}`;
   return (
-    <div
-      className="carousel-card"
-      style={{
-        background: `url(${bgImg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "bottom",
-      }}
-    >
+    <div className="carousel-card">
+      <img src={img} alt="" />
       <span className={eventTagClass}>
         <span className="material-symbols-rounded">radio_button_unchecked</span>{" "}
         {status}

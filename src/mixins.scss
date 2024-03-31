@@ -1,0 +1,50 @@
+@mixin blur() {
+  -webkit-backdrop-filter: blur(16px);
+  -moz-backdrop-filter: blur(16px);
+  -ms-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+@mixin tag-style($type) {
+  @include blur();
+  $color: rgb(0, 0, 0);
+  $bgcolor: rgba(0, 0, 0, 0.2);
+  @if $type == upcoming {
+    $color: rgb(255, 166, 1);
+    $bgcolor: rgba(192, 96, 0, 0.1);
+  } @else if $type == live {
+    $color: rgb(145, 255, 0);
+    $bgcolor: rgba(69, 206, 14, 0.2);
+  } @else if $type == completed {
+    $color: rgb(90, 90, 90);
+    $bgcolor: rgba(150, 150, 150, 0.3);
+  } @else if $type == date {
+    $color: rgb(255, 217, 0);
+    $bgcolor: rgba(255, 217, 0, 0.2);
+  } @else if $type == techTag {
+    $color: #000827;
+    $bgcolor: whitesmoke;
+  }
+  color: $color;
+  font-weight: 600;
+  background-color: $bgcolor;
+  padding: 0.1rem 0.8rem;
+  border: 1px solid $color;
+  border-radius: 1rem;
+}
+
+@mixin flex($dir, $wrap) {
+  display: flex;
+
+  @if $dir == row {
+    flex-direction: row;
+  } @else if $dir == col {
+    flex-direction: column;
+  }
+
+  @if $wrap == yes {
+    flex-wrap: wrap;
+  } @else if $wrap == no {
+    flex-wrap: nowrap;
+  }
+}
