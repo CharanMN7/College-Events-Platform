@@ -5,21 +5,21 @@
       "date": "April 30, 2024",
       "oneLiner": "Let the sparks of 2024 light up your future!",
       "status": "upcoming",
-      "bgImg": "../../src/carousel/background.jpg"
+      "bgImg": "./background.jpg"
     },
     {
-      "name": "GDSc irl2",
+      "name": "GDSC irl2",
       "date": "March 31, 2024",
       "oneLiner": "We have a lot to catch up on, developers, ASSEMBLE!",
       "status": "upcoming",
-      "bgImg": "../../src/carousel/background.jpg"
+      "bgImg": "./background.jpg"
     },
     {
       "name": "Hackoverflow 2.0",
       "date": "March 26, 2024",
       "oneLiner": "Calling all hackers for a 3 day full-time battle!",
       "status": "live",
-      "bgImg": "../../src/carousel/background.jpg"
+      "bgImg": "./background.jpg"
     }
   ]
 }
