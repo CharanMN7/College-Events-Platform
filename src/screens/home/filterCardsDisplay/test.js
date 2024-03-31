@@ -1,4 +1,4 @@
-const tags = [
+export const tags = [
   "web",
   "programming",
   "fest",
@@ -7,7 +7,7 @@ const tags = [
   "electronics",
 ];
 
-const events = [
+export const events = [
   [
     {
       name: "Sparks 2024",
