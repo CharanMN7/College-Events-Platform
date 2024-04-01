@@ -1,4 +1,4 @@
-import "./FilterCardsDisplay.scss";
+import "./filterCardsDisplay.scss";
 import { tags, events } from "./test";
 import TheCard from "./TheCard";
 
