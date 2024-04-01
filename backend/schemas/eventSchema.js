@@ -4,21 +4,12 @@ const { Schema } = mongoose;
 const eventSchema = new Schema({
   name: String,
   eventId: String,
-  date: String,
-  status: String,
+  date: Date,
   oneLiner: String,
   description: String,
   mode: String,
-  address: String,
-  cludId: String,
-  speakers: { firstName: String, lastName: String, img: String, title: String },
-  facilitators: {
-    firstName: String,
-    lastName: String,
-    img: String,
-    title: String,
-  },
-  attendees: { FirstName: String, LastName: String, Email: String },
+  eventVenue: String,
+  clubId: String,
 });
 
 module.exports = eventSchema;
