@@ -10,6 +10,7 @@ const eventSchema = new Schema({
   mode: String,
   eventVenue: String,
   clubName: String,
+  attendees:[]
 });
 
 module.exports = eventSchema;
