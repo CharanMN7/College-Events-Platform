@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema(
             default: 0
         },
         date: {
-            type: date(),
+            type: Date,
             required: true
         },
         oneliner: {
