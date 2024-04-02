@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema(
             default: 0
         },
         date: {
-            type: String,
+            type: date(),
             required: true
         },
         oneliner: {
@@ -36,6 +36,7 @@ const UserSchema = mongoose.Schema(
           required:false
         },
     },
+    
     {
         timestamps:true,
     }
