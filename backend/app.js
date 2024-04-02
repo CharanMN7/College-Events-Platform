@@ -9,8 +9,7 @@ mongoose.connect(process.env.MONGO_URI);
 
 app.listen(3000);
 
-<<<<<<< Updated upstream
-=======
+
 //this api gets all the events from db(admin)
 app.get('/api/event',async(req,res)=>{
     try{
@@ -72,5 +71,4 @@ app.get('/api/users/:id',async(req,res)=>{
 
 
 
->>>>>>> Stashed changes
 module.exports = app;
