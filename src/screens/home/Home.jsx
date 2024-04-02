@@ -10,11 +10,7 @@ const Home = () => {
       <Carousel />
       <FilterCardsDisplay />
     </>
-<<<<<<< HEAD
-    // <RsvpForm /> for now ...
-=======
     // <RsvpForm />
->>>>>>> main
   );
 };
 export default Home;
