@@ -9,7 +9,6 @@ mongoose.connect(process.env.MONGO_URI);
 
 app.listen(3000);
 
-
 //this api gets all the events from db(admin)
 app.get('/api/event',async(req,res)=>{
     try{
