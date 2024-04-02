@@ -10,10 +10,10 @@ mongoose.connect(process.env.MONGO_URI);
 app.listen(3000);
 
 //this api gets all the events from db(admin)
-app.get('/api/event',async(req,res)=>{
+app.get('/api/events',async(req,res)=>{
     try{
-        const events=await Event.find({});
-        res.status(200).json(events);
+        const event=await Event.find({});
+        res.status(200).json(event);
     }catch(error){
         res.status(500).json({message:error.message});
     }

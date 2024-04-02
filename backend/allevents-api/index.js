@@ -1,6 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
-const Event=require('../schemas/eventSchema.js');
+const Event=require('./eventSchema.js');
 //const dotenv = require("dotenv").config();
 
 const app=express()
@@ -21,10 +21,10 @@ app.get('/',(req,res)=>{
 res.send("hello from node api");
 });
 
-app.get('/api/event',async(req,res)=>{
+app.get('/api/events',async(req,res)=>{
     try{
-        const events=await Event.find({});
-        res.status(200).json(events);
+        const event=await Event.find({});
+        res.status(200).json(event);
     }catch(error){
         res.status(500).json({message:error.message});
     }
@@ -77,7 +77,7 @@ app.put('/api/events/:id',async(req,res)=>{
         if(!event){
             return res.status(404).json({message: "event not found"});
         }
-        const updatedevent=await event.findById(id);
+        const updatedevent=await Event.findById(id);
         res.status(200).json(updatedevent);
 
 

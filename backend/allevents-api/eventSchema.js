@@ -19,6 +19,7 @@ module.exports = eventSchema;*/
 
 
 
+const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 const eventSchema = mongoose.Schema(
     {
@@ -32,7 +33,7 @@ const eventSchema = mongoose.Schema(
             default: 0
         },
         date: {
-            type: Date,
+            type:Date,
             required: true
         },
         oneliner: {
