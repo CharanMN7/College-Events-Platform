@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EventPage from "./screens/eventPage/EventPage";
 import Home from "./screens/home/Home";
-import About from "./screens/about/About";
 
 function App() {
   return (
