@@ -10,7 +10,7 @@ const TheCard = ({ name, date, status, oneLiner }) => {
       <span className="card-date date-dark">{date}</span>
       <h3 className="card-event">{name}</h3>
       <p className="card-one-liner">{oneLiner}</p>
-      <Link to="/event" className="text-btn">
+      <Link to="/event" className="view-event-btn">
         <span>View Event</span>
         <span className="material-symbols-rounded">chevron_right</span>
       </Link>
