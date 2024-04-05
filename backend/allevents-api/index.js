@@ -26,15 +26,15 @@ app.use(express.json());
 //   }
 // });
 
-app.get("/api/events/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const event = await Event.findById(id);
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// app.get("/api/events/:id", async (req, res) => {
+//   try {
+//     const { id } = req.params;
+//     const event = await Event.findById(id);
+//     res.status(200).json(event);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 app.post("/api/events", async (req, res) => {
   //console.log(req.body);
