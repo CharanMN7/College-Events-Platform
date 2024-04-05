@@ -6,7 +6,14 @@ const Event = require("./schemas/eventSchema.js");
 const app = express();
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI);
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("connected to the dB");
+  })
+  .catch(() => {
+    console.log("connection failed");
+  });
 
 /**
  * in ES version
