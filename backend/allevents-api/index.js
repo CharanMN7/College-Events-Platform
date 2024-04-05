@@ -47,16 +47,16 @@ app.use(express.json());
 //   }
 // });
 
-mongoose
-  .connect(
-    "mongodb+srv://charan:cherrythebest@incrediblemango.ha5o1tn.mongodb.net/?retryWrites=true&w=majority&appName=IncredibleMango",
-  )
-  .then(() => {
-    console.log("connected to db");
-  })
-  .catch(() => {
-    console.log("connection failed");
-  });
+// mongoose
+//   .connect(
+//     "mongodb+srv://charan:cherrythebest@incrediblemango.ha5o1tn.mongodb.net/?retryWrites=true&w=majority&appName=IncredibleMango",
+//   )
+//   .then(() => {
+//     console.log("connected to db");
+//   })
+//   .catch(() => {
+//     console.log("connection failed");
+//   });
 
 //update a product
 
