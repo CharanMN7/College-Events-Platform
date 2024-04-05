@@ -20,7 +20,7 @@ app.use(json());
 connect(process.env.MONGO_URI);
  */
 
-app.listen(3000);
+app.listen(3000, () => console.log("Server running"));
 
 //this api gets all the events from db(admin)
 app.get("/api/events", async (req, res) => {
