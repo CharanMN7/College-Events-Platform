@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
+const Event = require("./schemas/eventSchema.js");
 
 const app = express();
 app.use(express.json());
