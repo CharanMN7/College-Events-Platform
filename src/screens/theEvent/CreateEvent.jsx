@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./CreateEvent.scss";
 import NavBar from "../../reusableComponents/NavBar/NavBar";
-import { Link } from "react-router-dom";
 
 const CreateEvent = ({ operation }) => {
   return (
