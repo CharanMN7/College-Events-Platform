@@ -17,14 +17,14 @@ app.use(express.json());
 //   res.send("hello from node api");
 // });
 
-app.get("/api/events", async (req, res) => {
-  try {
-    const event = await Event.find({});
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+// app.get("/api/events", async (req, res) => {
+//   try {
+//     const event = await Event.find({});
+//     res.status(200).json(event);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 app.get("/api/events/:id", async (req, res) => {
   try {
