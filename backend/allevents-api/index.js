@@ -10,12 +10,12 @@ app.use(express.json());
 //routes
 //app.use("/api/products",productRoute);
 
-app.listen(3000, () => {
-  console.log("server running");
-});
-app.get("/", (req, res) => {
-  res.send("hello from node api");
-});
+// app.listen(3000, () => {
+//   console.log("server running");
+// });
+// app.get("/", (req, res) => {
+//   res.send("hello from node api");
+// });
 
 app.get("/api/events", async (req, res) => {
   try {
