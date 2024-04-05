@@ -76,4 +76,18 @@ app.put("/api/events/:id", async (req, res) => {
   }
 });
 
+//delete a product
+app.delete("/api/events/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const event = await Event.findByIdAndDelete(id);
+    if (!event) {
+      return res.status(404).json({ message: "event not found" });
+    }
+    res.status(200).json({ message: "event deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 module.exports = app;
