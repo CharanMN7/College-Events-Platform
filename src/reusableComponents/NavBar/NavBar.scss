@@ -14,7 +14,12 @@ header {
   @include blur();
   z-index: 99;
 
-  img {
+  a {
+    display: block;
+    height: 100%;
+  }
+
+  a > img {
     height: 100%;
   }
 

@@ -31,7 +31,7 @@ const Dashboard = () => {
       <div className="all-events">
         <div className="heading-part">
           <h1>All Events</h1>
-          <Link>Create Event</Link>
+          <Link to="/create-event">Create Event</Link>
         </div>
 
         <div className="events-list">

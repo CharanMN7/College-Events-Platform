@@ -5,16 +5,13 @@ import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <header>
-      <img src={logoRect} alt="" />
+      <Link to="/">
+        <img src={logoRect} alt="" />
+      </Link>
       <nav>
         <ul className="open-nav">
           <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link>
-              <span className="material-symbols-rounded">account_circle</span>
-            </Link>
+            <Link to="/admin">Admin</Link>
           </li>
         </ul>
         <span className="material-symbols-rounded nav-menu">menu</span>

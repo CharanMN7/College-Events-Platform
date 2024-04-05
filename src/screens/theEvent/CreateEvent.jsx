@@ -8,7 +8,7 @@ const CreateEvent = ({ operation }) => {
       <NavBar />
       <div className="create-event">
         <div className="heading-part">
-          <h1>{operation} Events</h1>
+          <h1>{operation} Event</h1>
           <button>{operation} Event</button>
         </div>
         <form action="">

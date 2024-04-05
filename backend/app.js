@@ -15,22 +15,10 @@ mongoose
     console.log("connection failed");
   });
 
-/**
- * in ES version
- * import express, { json } from "express";
-import { connect } from "mongoose";
-const dotenv = require("dotenv").config();
-
-const app = express();
-app.use(json());
-
-connect(process.env.MONGO_URI);
- */
-
 app.listen(3000, () => console.log("Server running"));
 
 //this api gets all the events from db(admin)
-app.get("/api/events", async (req, res) => {
+app.get("/events", async (req, res) => {
   try {
     const event = await Event.find({});
     res.status(200).json(event);
@@ -38,8 +26,9 @@ app.get("/api/events", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-//this api gets id-specified event from db(admin)
-app.get("/api/events/:id", async (req, res) => {
+
+// gets id-specified event from db (admin)
+app.get("/events/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const event = await Event.findById(id);
@@ -49,10 +38,8 @@ app.get("/api/events/:id", async (req, res) => {
   }
 });
 
-//this api creates an event(admin)
-app.post("/api/events", async (req, res) => {
-  //console.log(req.body);
-  //res.send(req.body);
+// creates an event (admin)
+app.put("/create-event", async (req, res) => {
   try {
     const event = await Event.create(req.body);
     res.status(200).json(event);
@@ -61,8 +48,8 @@ app.post("/api/events", async (req, res) => {
   }
 });
 
-//update a product
-app.put("/api/events/:id", async (req, res) => {
+// update a event
+app.post("/events/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const event = await Event.findByIdAndUpdate(id, req.body);
@@ -77,7 +64,7 @@ app.put("/api/events/:id", async (req, res) => {
 });
 
 //delete a product
-app.delete("/api/events/:id", async (req, res) => {
+app.delete("/events/:id", async (req, res) => {
   try {
     const { id } = req.params;
     const event = await Event.findByIdAndDelete(id);
