@@ -20,9 +20,7 @@ app.listen(3000,()=>{
 
 app.post('/api/login',async (req,res)=>{
     try{
-    //console.log(req.body);
-    //res.send(req.body);
-        const {username, password} = request.body
+        const {username, password} = req.body
         const dbUser=await Login.findOne({username})
         if(!dbUser){
             return res.status(400).json({message:'user not found'});
@@ -30,15 +28,10 @@ app.post('/api/login',async (req,res)=>{
         const isPasswordMatched= await dbUser.password === password
         if(isPasswordMatched ){
             const token = jwt.sign({ username: username }, "zxcvbnmasdfghjkl");
-            return res.json({ token });
+            return res.json({ message: 'Login successful', token });
         }else{
             return res.status(401).json({ message: 'Invalid credentials' });
         }
-        //if (!dbuser || (dbUser.password!==password)) {
-        //     return res.status(401).json({ error: "Invalid username or password" });
-        //   }
-        // const token = jwt.sign({ username: username }, "zxcvbnmasdfghjkl");
-        // res.json({ token });  
 
     }catch(error){
         res.send(error)
