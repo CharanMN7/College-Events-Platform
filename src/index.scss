@@ -13,6 +13,20 @@ body {
     "opsz" 24;
 }
 
+.view-event-btn {
+  @include flex(row, no);
+  text-decoration: none;
+  color: blue;
+  width: fit-content;
+  padding: 0.4rem 0 0.4rem 0.4rem;
+  border-radius: 0.5rem;
+  border: 1px solid #00000022;
+}
+
+.view-event-btn:hover {
+  background-color: rgba(188, 177, 251, 0.185);
+}
+
 .date {
   @include tag-style(date);
 }
