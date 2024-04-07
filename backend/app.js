@@ -77,4 +77,44 @@ app.delete("/events/:id", async (req, res) => {
   }
 });
 
+///Rsvp API 
+
+app.put("/rsvp/:id",async (req,res)=>{
+    const { id } = req.params;
+    const { firstName, lastName, email } = req.body;
+    const event = await Event.findOne({ _id: id });
+    if (!event) {
+        return res.status(404).json({ message: 'Event not found' });
+    }
+    event.attendees = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+    };
+    await event.save();
+    return res.json({ message: 'RSVP successful', event });
+})
+
+/////authentication 
+function authenticateToken(req, res, next) {
+    let jwtToken
+    const authHeader = req.headers['authorization']
+    if (authHeader !== undefined) {
+      jwtToken = authHeader.split(' ')[1]
+    }
+    if (jwtToken === undefined) {
+      res.status(401)
+      res.send('Invalid JWT Token')
+    } else {
+      jwt.verify(jwtToken, 'MY_SECRET_TOKEN', async (error, payload) => {
+        if (error) {
+          res.status(401)
+          res.send('Invalid JWT Token')
+        } else {
+          next()
+        }
+      })
+    }
+  }
+  
 module.exports = app;
