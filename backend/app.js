@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
@@ -12,6 +13,7 @@ const Login = require("./schemas/AdminModel");
 const Event = require("./schemas/EventModel");
 const Admin = require("./schemas/AdminModel");
 
+app.use(cors());
 app.use(express.json());
 
 // default home route
