@@ -1,12 +1,30 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import CarouselCard from "./CarouselCard";
 import "./Carousel.scss";
-import data from "./carouselData.json";
+import { getStatus, writeDate } from "../../../utils/dateAndStatus";
 
 const Carousel = () => {
   const carouselRef = useRef(null);
   const dotRef = useRef(null);
   let theIndex = 0;
+
+  const [allEvents, setAllEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      const apiRes = await fetch("https://raghu-clubs.onrender.com/all-events");
+
+      if (!apiRes.ok) {
+        console.log("Couldn't fetch /all-events");
+      }
+
+      const events = await apiRes.json();
+      setAllEvents(events);
+      console.log(allEvents);
+    };
+
+    fetchAllEvents();
+  });
 
   const scrollToItem = (index) => {
     theIndex = index;
@@ -37,25 +55,22 @@ const Carousel = () => {
   return (
     <div id="carousel-container">
       <div className="carousel" ref={carouselRef}>
-        {data.data.map((event) => (
+        {allEvents.map((event) => (
           <CarouselCard
-            name={event.name}
-            date={event.date}
-            oneLiner={event.oneLiner}
-            status={event.status}
-            bgImg={event.bgImg}
-            key={event.name}
+            name={event.title}
+            date={writeDate(event.date)}
+            oneLiner={event.shortDesc}
+            status={getStatus(event.date)}
+            bgImg={event.bannerUrl}
+            key={event._id}
           />
         ))}
       </div>
 
       <div className="nav-dots-box">
         <div className="navigation-dots" ref={dotRef}>
-          {data.data.map((event, index) => (
-            <span
-              onClick={() => scrollToItem(index)}
-              key={event.name + event.oneLiner[0]}
-            ></span>
+          {allEvents.map((event, index) => (
+            <span onClick={() => scrollToItem(index)} key={event._id}></span>
           ))}
         </div>
       </div>
