@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import { writeDate, getStatus } from "../../utils/dateAndStatus";
 
 /* eslint-disable react/prop-types */
-const EventCard = ({ title, shortDesc, date }) => {
+const EventCard = ({ title, shortDesc, date, id }) => {
   return (
-    <Link className="the-event">
+    <Link className="the-event" to={`/admin/event/:id`}>
       <div className="left-details">
         <h2>{title}</h2>
         <p>{shortDesc}</p>
