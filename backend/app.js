@@ -22,7 +22,14 @@ app.get("/", async (req, res) => {
 // Public APIs
 
 // returns details of all events without attendees info
-app.get("/all-events", async (req, res) => {});
+app.get("/all-events", async (req, res) => {
+  try {
+    const allEvents = await Event.find({});
+    res.send(allEvents);
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 // returns details of all events without attendees info
 app.get("/event/:id", async (req, res) => {});
