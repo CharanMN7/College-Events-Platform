@@ -75,7 +75,12 @@ app.get("/admin/all-events", verifyJWT, async (req, res) => {
 });
 
 // gets details of all event including attendees info
-app.get("/admin/event/:id", verifyJWT, async (req, res) => {});
+app.get("/admin/event/:id", verifyJWT, async (req, res) => {
+  const eventId = req.params.id;
+  const theEvent = await Event.findOne({ _id: eventId });
+
+  res.send(theEvent);
+});
 
 // saves new event data to the events collection
 app.put("/admin/create-event", verifyJWT, async (req, res) => {});
