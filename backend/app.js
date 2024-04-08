@@ -49,6 +49,23 @@ app.put("/event/:id/rsvp", async (req, res) => {
   res.send("Done!");
 });
 
+// JWT middleware to verify JWT token before proceeding with the operation
+const verifyJWT = (req, res, next) => {
+  const token = req.body.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;
+    next();
+  } catch (error) {
+    res.status(401).json({ message: "Invalid token" });
+  }
+};
+
 // Admin APIs
 
 // gets details of all events including attendees info
