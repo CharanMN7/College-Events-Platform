@@ -1,21 +1,54 @@
-const express = require("express");
+/*const express = require("express");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+
+const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
-const Event = require("./schemas/eventSchema.js");
 
 const app = express();
+const Login = require("./schemas/loginSchema");
+
+//middleware
 app.use(express.json());
+//app.use(express.urlencoded({encoded:false}));
+//routes
+//app.use("/api/products",productRoute);
+
+app.get("/", async (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
+
+app.post("/login", async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const dbUser = await Login.findOne({ username });
+
+    if (!dbUser) {
+      return res.status(400).json({ message: "user not found" });
+    }
+
+    const isPasswordMatched = (await dbUser.password) === password;
+
+    if (isPasswordMatched) {
+      const token = jwt.sign({ username: username }, "zxcvbnmasdfghjkl");
+      return res.json({ message: "Login successful", token });
+    } else {
+      return res.status(401).json({ message: "Invalid credentials" });
+    }
+  } catch (error) {
+    res.send(error);
+  }
+});
 
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
-    console.log("connected to the dB");
+    console.log("connected to db");
   })
   .catch(() => {
     console.log("connection failed");
   });
 
-app.listen(3000, () => console.log("Server running"));
 
 //this api gets all the events from db(admin)
 app.get("/events", async (req, res) => {
@@ -48,36 +81,19 @@ app.put("/create-event", async (req, res) => {
   }
 });
 
-// update a event
-app.post("/events/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const event = await Event.findByIdAndUpdate(id, req.body);
-    if (!event) {
-      return res.status(404).json({ message: "event not found" });
-    }
-    const updatedevent = await Event.findById(id);
-    res.status(200).json(updatedevent);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
+//this api creates an event(admin)
+app.post('/api/events',async (req,res)=>{
+    //console.log(req.body);
+    //res.send(req.body);
+    try{
+        const event=await Event.create(req.body);
+        res.status(200).json(event);
 
-//delete a product
-app.delete("/events/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const event = await Event.findByIdAndDelete(id);
-    if (!event) {
-      return res.status(404).json({ message: "event not found" });
+    }catch(error){
+        res.status(500).json({message:error.message});
     }
-    res.status(200).json({ message: "event deleted successfully" });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-///Rsvp API 
+}
+);
 
 app.put("/rsvp/:id",async (req,res)=>{
     const { id } = req.params;
@@ -95,26 +111,8 @@ app.put("/rsvp/:id",async (req,res)=>{
     return res.json({ message: 'RSVP successful', event });
 })
 
-/////authentication 
-function authenticateToken(req, res, next) {
-    let jwtToken
-    const authHeader = req.headers['authorization']
-    if (authHeader !== undefined) {
-      jwtToken = authHeader.split(' ')[1]
-    }
-    if (jwtToken === undefined) {
-      res.status(401)
-      res.send('Invalid JWT Token')
-    } else {
-      jwt.verify(jwtToken, 'MY_SECRET_TOKEN', async (error, payload) => {
-        if (error) {
-          res.status(401)
-          res.send('Invalid JWT Token')
-        } else {
-          next()
-        }
-      })
-    }
-  }
-  
-module.exports = app;
+const port = 3000;
+app.listen(port, () => {
+  console.log(`server running at http://localhost:${port}`);
+});
+
