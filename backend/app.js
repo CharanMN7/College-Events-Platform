@@ -32,6 +32,7 @@ app.get("/all-events", async (req, res) => {
 app.get("/event/:id", async (req, res) => {
   const eventId = req.params.id;
   const theEvent = await Event.findOne({ _id: eventId });
+  theEvent["attendees"] = [];
 
   res.send(theEvent);
 });
