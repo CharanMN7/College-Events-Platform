@@ -29,11 +29,6 @@ const EventPage = () => {
           ))}
         </div>
         <p className="event-desc">{data.description}</p>
-        <div className="event-all-ppl">
-          <EventPpl heading="Speakers" ppl={data.speakers} />
-          <EventPpl heading="Facilitators" ppl={data.facilitators} />
-          <EventPpl heading="Organizers" ppl={organizers} />
-        </div>
       </section>
     </>
   );
