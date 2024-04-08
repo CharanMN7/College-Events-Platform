@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
 
 const app = express();
-const Login = require("./schemas/loginSchema");
 const Login = require("./schemas/AdminModel");
 
 // Models
