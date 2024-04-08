@@ -11,7 +11,7 @@ const eventSchema = Schema({
   shortDesc: String,
   tag: String,
   where: String,
-  dat: String,
+  date: String,
 });
 
 const Event = model("Event", eventSchema);
