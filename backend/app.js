@@ -114,7 +114,7 @@ app.put("/admin/create-event", verifyJWT, async (req, res) => {
 app.post("/admin/event/:id/update", verifyJWT, async (req, res) => {});
 
 // gets the jwt token upon successful admin user verification (not robust)
-app.get("/admin/login", async (req, res) => {
+app.post("/admin/login", async (req, res) => {
   const { username, password } = req.body;
   const dbUser = await Admin.findOne({ username: username });
 
