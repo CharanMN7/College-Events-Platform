@@ -6,33 +6,127 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
 
 const app = express();
-const Login = require("./schemas/loginSchema");
+const Login = require("./schemas/AdminModel");
+
+// Models
+const Event = require("./schemas/EventModel");
+const Admin = require("./schemas/AdminModel");
 
 app.use(express.json());
 
+// default home route
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/login", async (req, res) => {
+// Public APIs
+
+// returns details of all events without attendees info
+app.get("/all-events", async (req, res) => {
+  const allEvents = await Event.find({});
+  allEvents["attendees"] = [];
+  res.send(allEvents);
+});
+
+// returns details of all events without attendees info
+app.get("/event/:id", async (req, res) => {
+  const eventId = req.params.id;
+  const theEvent = await Event.findOne({ _id: eventId });
+  theEvent["attendees"] = [];
+
+  res.send(theEvent);
+});
+
+// saves attendee info to the event (puts the rsvp info into the attendees field of the event)
+app.put("/event/:id/rsvp", async (req, res) => {
+  const eventId = req.params.id;
+  const attendee = req.body;
+
+  query = { _id: eventId };
+  update = { $addToSet: { attendees: attendee } };
+
+  await Event.findOneAndUpdate(query, update);
+  res.send("Done!");
+});
+
+// JWT middleware to verify JWT token before proceeding with the operation
+const verifyJWT = (req, res, next) => {
+  const token = req.body.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
   try {
-    const { username, password } = req.body;
-    const dbUser = await Login.findOne({ username });
-
-    if (!dbUser) {
-      return res.status(400).json({ message: "user not found" });
-    }
-
-    const isPasswordMatched = (await dbUser.password) === password;
-
-    if (isPasswordMatched) {
-      const token = jwt.sign({ username: username }, "zxcvbnmasdfghjkl");
-      return res.json({ message: "Login successful", token });
-    } else {
-      return res.status(401).json({ message: "Invalid credentials" });
-    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.userId = decoded.userId;
+    next();
   } catch (error) {
-    res.send(error);
+    res.status(401).json({ message: "Invalid token" });
+  }
+};
+
+// Admin APIs
+
+// gets details of all events including attendees info
+app.get("/admin/all-events", verifyJWT, async (req, res) => {
+  const allEvents = await Event.find({});
+  res.send(allEvents);
+});
+
+// gets details of all event including attendees info
+app.get("/admin/event/:id", verifyJWT, async (req, res) => {
+  const eventId = req.params.id;
+  const theEvent = await Event.findOne({ _id: eventId });
+
+  res.send(theEvent);
+});
+
+// saves new event data to the events collection
+app.put("/admin/create-event", verifyJWT, async (req, res) => {
+  const eventData = req.body;
+
+  if (Event.findOne({ title: eventData.title })) {
+    res.send(`${eventData.title} already exists`);
+  } else {
+    const NewEvent = new Event({
+      title: eventData.title,
+      about: eventData.about,
+      attendees: [],
+      bannerUrl: eventData.bannerUrl,
+      link: eventData.link,
+      mode: eventData.mode,
+      rsvp: eventData.rsvp,
+      shortDesc: eventData.shortDesc,
+      tag: eventData.tag,
+      where: eventData.where,
+      date: eventData.date,
+    });
+
+    await NewEvent.save();
+    res.send("Done!");
+  }
+});
+
+// updates the details of an existing event
+app.post("/admin/event/:id/update", verifyJWT, async (req, res) => {});
+
+// gets the jwt token upon successful admin user verification (not robust)
+app.get("/admin/login", async (req, res) => {
+  const { username, password } = req.body;
+  const dbUser = await Admin.findOne({ username: username });
+
+  if (!dbUser) {
+    return res.status(400).json({ message: "user not found" });
+  }
+
+  const isPasswordMatched = (await dbUser.password) === password;
+
+  if (isPasswordMatched) {
+    const token = jwt.sign({ username: username }, process.env.JWT_SECRET);
+    return res.json({ message: "Login Successful", token });
+  } else {
+    return res.status(401).json({ message: "Wrong Password" });
   }
 });
 
@@ -45,64 +139,9 @@ mongoose
     console.log("connection failed");
   });
 
-//this api gets all the events from db(admin)
-app.get("/events", async (req, res) => {
-  try {
-    const event = await Event.find({});
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// gets id-specified event from db (admin)
-app.get("/events/:id", async (req, res) => {
-  try {
-    const { id } = req.params;
-    const event = await Event.findById(id);
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-// creates an event (admin)
-app.put("/create-event", async (req, res) => {
-  try {
-    const event = await Event.create(req.body);
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-//this api creates an event(admin)
-app.post("/api/events", async (req, res) => {
-  try {
-    const event = await Event.create(req.body);
-    res.status(200).json(event);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
-  }
-});
-
-app.put("/rsvp/:id", async (req, res) => {
-  const { id } = req.params;
-  const { firstName, lastName, email } = req.body;
-  const event = await Event.findOne({ _id: id });
-  if (!event) {
-    return res.status(404).json({ message: "Event not found" });
-  }
-  event.attendees = {
-    firstName: firstName,
-    lastName: lastName,
-    email: email,
-  };
-  await event.save();
-  return res.json({ message: "RSVP successful", event });
-});
-
 const port = 3000;
 app.listen(port, () => {
   console.log(`server running at http://localhost:${port}`);
 });
+
+module.exports = app;

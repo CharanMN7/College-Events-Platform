@@ -46,7 +46,7 @@ const CreateEvent = ({ operation }) => {
             <label htmlFor="use-ext">Use External RSVP</label>
           </div>
 
-          <div className="mdoes">
+          <div className="modes">
             <span>Mode: </span>
             <input type="radio" name="mode" id="hybrid" />
             <label htmlFor="hybrid">Hybrid</label>
