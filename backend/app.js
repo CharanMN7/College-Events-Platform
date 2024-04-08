@@ -23,12 +23,9 @@ app.get("/", async (req, res) => {
 
 // returns details of all events without attendees info
 app.get("/all-events", async (req, res) => {
-  try {
-    const allEvents = await Event.find({});
-    res.send(allEvents);
-  } catch (err) {
-    console.log(err);
-  }
+  const allEvents = await Event.find({});
+  allEvents["attendees"] = [];
+  res.send(allEvents);
 });
 
 // returns details of all events without attendees info
