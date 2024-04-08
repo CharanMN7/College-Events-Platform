@@ -8,11 +8,7 @@ const dotenv = require("dotenv").config();
 const app = express();
 const Login = require("./schemas/loginSchema");
 
-//middleware
 app.use(express.json());
-//app.use(express.urlencoded({encoded:false}));
-//routes
-//app.use("/api/products",productRoute);
 
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/index.html");
@@ -49,7 +45,6 @@ mongoose
     console.log("connection failed");
   });
 
-
 //this api gets all the events from db(admin)
 app.get("/events", async (req, res) => {
   try {
@@ -82,37 +77,32 @@ app.put("/create-event", async (req, res) => {
 });
 
 //this api creates an event(admin)
-app.post('/api/events',async (req,res)=>{
-    //console.log(req.body);
-    //res.send(req.body);
-    try{
-        const event=await Event.create(req.body);
-        res.status(200).json(event);
+app.post("/api/events", async (req, res) => {
+  try {
+    const event = await Event.create(req.body);
+    res.status(200).json(event);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-}
-);
-
-app.put("/rsvp/:id",async (req,res)=>{
-    const { id } = req.params;
-    const { firstName, lastName, email } = req.body;
-    const event = await Event.findOne({ _id: id });
-    if (!event) {
-        return res.status(404).json({ message: 'Event not found' });
-    }
-    event.attendees = {
-        firstName: firstName,
-        lastName: lastName,
-        email: email
-    };
-    await event.save();
-    return res.json({ message: 'RSVP successful', event });
-})
+app.put("/rsvp/:id", async (req, res) => {
+  const { id } = req.params;
+  const { firstName, lastName, email } = req.body;
+  const event = await Event.findOne({ _id: id });
+  if (!event) {
+    return res.status(404).json({ message: "Event not found" });
+  }
+  event.attendees = {
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+  };
+  await event.save();
+  return res.json({ message: "RSVP successful", event });
+});
 
 const port = 3000;
 app.listen(port, () => {
   console.log(`server running at http://localhost:${port}`);
 });
-
