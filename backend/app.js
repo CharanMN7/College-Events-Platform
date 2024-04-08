@@ -7,6 +7,11 @@ const dotenv = require("dotenv").config();
 
 const app = express();
 const Login = require("./schemas/loginSchema");
+const Login = require("./schemas/AdminModel");
+
+// Models
+const Event = require("./schemas/EventModel");
+const Admin = require("./schemas/AdminModel");
 
 app.use(express.json());
 
