@@ -83,7 +83,30 @@ app.get("/admin/event/:id", verifyJWT, async (req, res) => {
 });
 
 // saves new event data to the events collection
-app.put("/admin/create-event", verifyJWT, async (req, res) => {});
+app.put("/admin/create-event", verifyJWT, async (req, res) => {
+  const eventData = req.body;
+
+  if (Event.findOne({ title: eventData.title })) {
+    res.send(`${eventData.title} already exists`);
+  } else {
+    const NewEvent = new Event({
+      title: eventData.title,
+      about: eventData.about,
+      attendees: [],
+      bannerUrl: eventData.bannerUrl,
+      link: eventData.link,
+      mode: eventData.mode,
+      rsvp: eventData.rsvp,
+      shortDesc: eventData.shortDesc,
+      tag: eventData.tag,
+      where: eventData.where,
+      date: eventData.date,
+    });
+
+    await NewEvent.save();
+    res.send("Done!");
+  }
+});
 
 // updates the details of an existing event
 app.post("/admin/event/:id/update", verifyJWT, async (req, res) => {});
