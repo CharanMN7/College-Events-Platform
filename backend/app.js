@@ -15,6 +15,17 @@ app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
+// Public APIs
+
+// returns details of all events without attendees info
+app.get("/all-events", async (req, res) => {});
+
+// returns details of all events without attendees info
+app.get("/event/:id", async (req, res) => {});
+
+// saves attendee info to the event (puts the rsvp info into the attendees field of the event)
+app.put("/event/:id/rsvp", async (req, res) => {});
+
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
