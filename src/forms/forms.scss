@@ -1,6 +1,7 @@
 @import "../mixins.scss";
 // RSVP form styles
 
+.login,
 .rsvp-form {
   padding: 2rem;
   position: absolute;
@@ -53,5 +54,21 @@
 
   button:active {
     background-color: rgba(5, 59, 0, 0.1);
+  }
+}
+
+.login-container {
+  width: 100%;
+  position: absolute;
+  top: 30%;
+}
+
+.login {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+
+  p {
+    font-size: 2rem;
   }
 }
