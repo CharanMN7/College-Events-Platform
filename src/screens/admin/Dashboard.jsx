@@ -31,7 +31,7 @@ const Dashboard = () => {
       <div className="all-events">
         <div className="heading-part">
           <h1>All Events</h1>
-          <Link to="/create-event">Create Event</Link>
+          <Link to="/admin/create-event">Create Event</Link>
         </div>
 
         <div className="events-list">
@@ -41,6 +41,7 @@ const Dashboard = () => {
               shortDesc={event.shortDesc}
               date={event.date}
               key={event.eventId}
+              id={event.title}
             />
           ))}
         </div>

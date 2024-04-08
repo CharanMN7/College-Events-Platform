@@ -1,9 +1,11 @@
 import NavBar from "../../reusableComponents/NavBar/NavBar";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./Dashboard.scss";
 import Attendee from "./Attendee";
 
 const ViewEvent = () => {
+  const { id } = useParams();
+
   const registered = [
     {
       name: "Charan Manikanta N",
@@ -20,6 +22,7 @@ const ViewEvent = () => {
       email: "myemail@gmail.com",
       date: "March 20, 2024",
     },
+    s,
   ];
 
   return (

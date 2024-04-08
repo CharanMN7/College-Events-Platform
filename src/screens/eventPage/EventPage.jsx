@@ -2,8 +2,11 @@ import EventPpl from "./EventPpl";
 import "./EventPage.scss";
 import { data, organizers } from "./test";
 import NavBar from "../../reusableComponents/NavBar/NavBar";
+import { useParams } from "react-router-dom";
 
 const EventPage = () => {
+  const { id } = useParams();
+
   return (
     <>
       <NavBar />
