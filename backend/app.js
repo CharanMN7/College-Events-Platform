@@ -1,4 +1,4 @@
-/*const express = require("express");
+const express = require("express");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 
@@ -95,8 +95,24 @@ app.post('/api/events',async (req,res)=>{
 }
 );
 
+app.put("/rsvp/:id",async (req,res)=>{
+    const { id } = req.params;
+    const { firstName, lastName, email } = req.body;
+    const event = await Event.findOne({ _id: id });
+    if (!event) {
+        return res.status(404).json({ message: 'Event not found' });
+    }
+    event.attendees = {
+        firstName: firstName,
+        lastName: lastName,
+        email: email
+    };
+    await event.save();
+    return res.json({ message: 'RSVP successful', event });
+})
 
 const port = 3000;
 app.listen(port, () => {
   console.log(`server running at http://localhost:${port}`);
 });
+
