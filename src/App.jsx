@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EventPage from "./screens/eventPage/EventPage";
+import Dashboard from "./screens/admin/Dashboard";
 import Home from "./screens/home/Home";
-import About from "./screens/about/About";
+import CreateEvent from "./screens/theEvent/CreateEvent";
 
 function App() {
   return (
@@ -9,7 +10,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/event" element={<EventPage />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/admin" element={<Dashboard />} />
+        <Route
+          path="/create-event"
+          element={<CreateEvent operation="Create" />}
+        />
       </Routes>
     </BrowserRouter>
   );
