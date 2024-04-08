@@ -30,10 +30,23 @@ function App() {
           <Route
             path="/admin/create-event"
             element={
-              isLoggedIn ? <CreateEvent operation="create" /> : <Login />
+              isLoggedIn ? <CreateEvent operation="Create" /> : <Login />
             }
           />
           <Route path="/admin/event/:id" element={<ViewEvent />} />
+          {/*
+           **************
+           * AllEvents Route:
+           * <Route path="/all-events" element={<AllEvents />} />
+           *
+           * update event route:
+           * <Route path="/admin/event/:id/update"
+           *   element={
+           *     isLoggedIn ? <CreateEvent operation="Update" /> : <Login />
+           *   }
+           * />
+           * ************
+           */}
         </Routes>
       </LoginContext.Provider>
     </BrowserRouter>
