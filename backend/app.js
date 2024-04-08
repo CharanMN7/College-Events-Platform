@@ -40,7 +40,17 @@ app.get("/event/:id", async (req, res) => {
 });
 
 // saves attendee info to the event (puts the rsvp info into the attendees field of the event)
-app.put("/event/:id/rsvp", async (req, res) => {});
+app.put("/event/:id/rsvp", async (req, res) => {
+  const eventId = req.params.id;
+  const attendee = req.body;
+
+  query = { _id: eventId };
+  update = { $addToSet: { attendees: attendee } };
+
+  await Event.findOneAndUpdate(query, update);
+  res.send("Done!");
+});
+
 
 mongoose
   .connect(process.env.MONGO_URI)
