@@ -10,11 +10,12 @@ const Login = require("./schemas/loginSchema");
 
 app.use(express.json());
 
+// default home route
 app.get("/", async (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.post("/login", async (req, res) => {
+app.get("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
     const dbUser = await Login.findOne({ username });
