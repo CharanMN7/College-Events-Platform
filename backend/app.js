@@ -71,13 +71,13 @@ const verifyJWT = (req, res, next) => {
 // Admin APIs
 
 // gets details of all events including attendees info
-app.get("/admin/all-events", verifyJWT, async (req, res) => {
+app.post("/admin/all-events", verifyJWT, async (req, res) => {
   const allEvents = await Event.find({});
   res.send(allEvents);
 });
 
 // gets details of all event including attendees info
-app.get("/admin/event/:id", verifyJWT, async (req, res) => {
+app.post("/admin/event/:id", verifyJWT, async (req, res) => {
   const eventId = req.params.id;
   const theEvent = await Event.findOne({ _id: eventId });
 
