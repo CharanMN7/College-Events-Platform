@@ -2,11 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import CarouselCard from "./CarouselCard";
 import "./Carousel.scss";
 import { getStatus, writeDate } from "../../../utils/dateAndStatus";
+let theIndex = 0;
 
 const Carousel = () => {
   const carouselRef = useRef(null);
   const dotRef = useRef(null);
-  let theIndex = 0;
 
   const [allEvents, setAllEvents] = useState([]);
 
@@ -24,7 +24,7 @@ const Carousel = () => {
     };
 
     fetchAllEvents();
-  });
+  }, []);
 
   const scrollToItem = (index) => {
     theIndex = index;
@@ -55,23 +55,34 @@ const Carousel = () => {
   return (
     <div id="carousel-container">
       <div className="carousel" ref={carouselRef}>
-        {allEvents.map((event) => (
-          <CarouselCard
-            name={event.title}
-            date={writeDate(event.date)}
-            oneLiner={event.shortDesc}
-            status={getStatus(event.date)}
-            bgImg={event.bannerUrl}
-            key={event._id}
-          />
-        ))}
+        {allEvents.map((event) => {
+          if (getStatus(event.date) !== "completed") {
+            return (
+              <CarouselCard
+                name={event.title}
+                date={writeDate(event.date)}
+                oneLiner={event.shortDesc}
+                status={getStatus(event.date)}
+                bgImg={event.bannerUrl}
+                key={event._id}
+              />
+            );
+          }
+        })}
       </div>
 
       <div className="nav-dots-box">
         <div className="navigation-dots" ref={dotRef}>
-          {allEvents.map((event, index) => (
-            <span onClick={() => scrollToItem(index)} key={event._id}></span>
-          ))}
+          {allEvents.map((event, index) => {
+            if (getStatus(event.date) !== "completed") {
+              return (
+                <span
+                  onClick={() => scrollToItem(index)}
+                  key={event._id}
+                ></span>
+              );
+            }
+          })}
         </div>
       </div>
 
