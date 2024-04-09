@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "./filterCardsDisplay.scss";
-import { tags } from "./test";
 import TheCard from "./TheCard";
 
 const FilterCardsDisplay = () => {
