@@ -10,40 +10,40 @@ const theMonth = (dateObj) => {
   let month = "";
 
   switch (dateObj.getMonth()) {
-    case 1:
+    case 0:
       month = "January";
       break;
-    case 2:
+    case 1:
       month = "February";
       break;
-    case 3:
+    case 2:
       month = "March";
       break;
-    case 4:
+    case 3:
       month = "April";
       break;
-    case 5:
+    case 4:
       month = "May";
       break;
-    case 6:
+    case 5:
       month = "June";
       break;
-    case 7:
+    case 6:
       month = "July";
       break;
-    case 8:
+    case 7:
       month = "August";
       break;
-    case 9:
+    case 8:
       month = "September";
       break;
-    case 10:
+    case 9:
       month = "October";
       break;
-    case 11:
+    case 10:
       month = "November";
       break;
-    case 12:
+    case 11:
       month = "December";
       break;
   }
@@ -101,9 +101,9 @@ export const getStatus = (date) => {
   const eventDay = Date.parse(date);
   const today = Date.parse(new Date());
 
-  if (today - eventDay > 0) {
+  if (today - eventDay > -84600000) {
     status = "completed";
-  } else if (today - eventDay < 0) {
+  } else if (today - eventDay < 86400000) {
     status = "upcoming";
   } else {
     status = "live";
