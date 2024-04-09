@@ -101,9 +101,9 @@ export const getStatus = (date) => {
   const eventDay = Date.parse(date);
   const today = Date.parse(new Date());
 
-  if (today - eventDay > -84600000) {
+  if (today - eventDay > 86400000) {
     status = "completed";
-  } else if (today - eventDay < 86400000) {
+  } else if (today - eventDay < -86400000) {
     status = "upcoming";
   } else {
     status = "live";
