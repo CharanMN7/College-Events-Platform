@@ -1,11 +1,4 @@
-export const tags = [
-  "web",
-  "programming",
-  "fest",
-  "women-empowerment",
-  "mechanical",
-  "electronics",
-];
+export const tags = ["technical", "Non-Technical", "Sports"];
 
 export const events = [
   {
