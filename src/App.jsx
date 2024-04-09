@@ -8,6 +8,7 @@ import Dashboard from "./screens/admin/Dashboard";
 import ViewEvent from "./screens/admin/ViewEvent";
 import CreateEvent from "./screens/theEvent/CreateEvent";
 import LoginContext from "./utils/LoginContext";
+import AllEvents from "./screens/AllEvents";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -31,18 +32,24 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <Routes>
             <Route path="/" element={<Home />} />
+
             <Route path="/event/:id" element={<EventPage />} />
+
             <Route
               path="/admin"
               element={isLoggedIn ? <Dashboard /> : <Login />}
             />
+
             <Route
               path="/admin/create-event"
               element={
                 isLoggedIn ? <CreateEvent operation="Create" /> : <Login />
               }
             />
+
             <Route path="/admin/event/:id" element={<ViewEvent />} />
+
+            <Route path="/all-events" element={<AllEvents />} />
             {/*
              **************
              * AllEvents Route:
