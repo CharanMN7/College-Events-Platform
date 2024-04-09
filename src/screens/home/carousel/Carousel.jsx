@@ -59,12 +59,12 @@ const Carousel = () => {
           if (getStatus(event.date) !== "completed") {
             return (
               <CarouselCard
-                name={event.title}
-                date={writeDate(event.date)}
-                oneLiner={event.shortDesc}
-                status={getStatus(event.date)}
-                bgImg={event.bannerUrl}
+                title={event.title}
+                date={event.date}
+                shortDesc={event.shortDesc}
+                bannerUrl={event.bannerUrl}
                 key={event._id}
+                id={event._id}
               />
             );
           }
