@@ -1,12 +1,15 @@
 import "./EventPage.scss";
 import NavBar from "../../reusableComponents/NavBar/NavBar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import fetchEvent from "./fetchEvent";
 import { getStatus, writeDate } from "../../utils/dateAndStatus";
+import Modal from "../../forms/Modal";
+import RsvpForm from "../../forms/RsvpForm";
 
 const EventPage = () => {
+  const [showRsvp, setShowRsvp] = useState(false);
   const { id } = useParams();
   const results = useQuery(["client/event", id], fetchEvent);
   const event = results?.data ?? {};
@@ -33,10 +36,20 @@ const EventPage = () => {
               getStatus(event.date) === "completed" ||
               getStatus(event.date) === "live"
             }
+            onClick={(e) => {
+              if (e.target.disabled == false) {
+                setShowRsvp(!showRsvp);
+              }
+            }}
           >
             RSVP
           </button>
         </div>
+        {showRsvp ? (
+          <Modal>
+            <RsvpForm close={showRsvp} doClose={setShowRsvp} />
+          </Modal>
+        ) : null}
         <h3 className="event-about">About</h3>
         <div className="event-tags">
           <span className="event-tag">{event.tag}</span>
