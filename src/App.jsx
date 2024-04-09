@@ -52,9 +52,6 @@ function App() {
             <Route path="/all-events" element={<AllEvents />} />
             {/*
              **************
-             * AllEvents Route:
-             * <Route path="/all-events" element={<AllEvents />} />
-             *
              * update event route:
              * <Route path="/admin/event/:id/update"
              *   element={
