@@ -1,18 +1,30 @@
+/* eslint-disable react/prop-types */
 import "./forms.scss";
 
-const RsvpForm = () => {
+const RsvpForm = ({ close, doClose }) => {
   return (
-    <form className="rsvp-form">
-      <span className="material-symbols-rounded">cancel</span>
+    <div className="rsvp-container">
+      <form className="rsvp-form">
+        <span
+          className="material-symbols-rounded"
+          onClick={() => {
+            doClose(!close);
+          }}
+        >
+          cancel
+        </span>
 
-      <p>RSVP for the event</p>
+        <p>RSVP for the event</p>
 
-      <input type="text" name="name" id="" placeholder="Name" />
+        <input type="text" name="fname" id="" placeholder="First Name" />
 
-      <input type="email" name="email" id="" placeholder="Email" />
+        <input type="text" name="lname" id="" placeholder="Last Name" />
 
-      <button>RSVP</button>
-    </form>
+        <input type="email" name="email" id="" placeholder="Email" />
+
+        <button>RSVP</button>
+      </form>
+    </div>
   );
 };
 
