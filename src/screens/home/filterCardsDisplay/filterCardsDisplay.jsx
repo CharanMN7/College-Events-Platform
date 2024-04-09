@@ -1,30 +1,50 @@
+import { useState, useEffect } from "react";
 import "./filterCardsDisplay.scss";
-import { tags, events } from "./test";
+import { tags } from "./test";
 import TheCard from "./TheCard";
 
 const FilterCardsDisplay = () => {
+  const [allEvents, setAllEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchAllEvents = async () => {
+      const apiRes = await fetch("https://raghu-clubs.onrender.com/all-events");
+
+      if (!apiRes.ok) {
+        console.log("Couldn't fetch /all-events");
+      }
+
+      const events = await apiRes.json();
+      setAllEvents(events);
+      console.log(allEvents);
+    };
+
+    fetchAllEvents();
+  }, []);
+
   return (
     <div className="card-display">
       <h2>Latest Events</h2>
-      <div className="tags">
+      {/* <div className="tags">
         {tags.map((tag) => (
           <span className="tag tech-tag" key={tag}>
             {tag}
           </span>
         ))}
         <span className="material-symbols-rounded cancel">cancel</span>
-      </div>
+      </div> */}
 
       {/* cards go here */}
       <div className="cards">
-        {events.map((event) => {
+        {allEvents.map((event) => {
           return (
             <TheCard
-              name={event.name}
+              title={event.title}
               date={event.date}
-              status={event.status}
-              oneLiner={event.oneLiner}
-              key={event.name + event.oneLiner}
+              shortDesc={event.shortDesc}
+              key={event._id}
+              bannerUrl={event.bannerUrl}
+              id={event._id}
             />
           );
         })}
