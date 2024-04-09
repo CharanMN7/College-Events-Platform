@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import CarouselCard from "./CarouselCard";
 import "./Carousel.scss";
-import { getStatus, writeDate } from "../../../utils/dateAndStatus";
+import { getStatus } from "../../../utils/dateAndStatus";
 let theIndex = 0;
 
 const Carousel = () => {
