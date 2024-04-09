@@ -1,10 +1,15 @@
 import "./EventPage.scss";
 import { data } from "./test";
 import NavBar from "../../reusableComponents/NavBar/NavBar";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const EventPage = () => {
   const { id } = useParams();
+
+  useEffect(() => {
+    scrollTo(0, 0);
+  }, []);
 
   return (
     <>
