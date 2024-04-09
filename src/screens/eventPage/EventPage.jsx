@@ -47,7 +47,7 @@ const EventPage = () => {
         </div>
         {showRsvp ? (
           <Modal>
-            <RsvpForm close={showRsvp} doClose={setShowRsvp} />
+            <RsvpForm close={showRsvp} doClose={setShowRsvp} id={id} />
           </Modal>
         ) : null}
         <h3 className="event-about">About</h3>
