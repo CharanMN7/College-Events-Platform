@@ -67,6 +67,17 @@
   cursor: pointer;
 }
 
+.event-rsvp:disabled {
+  color: grey;
+  border-color: grey;
+  background-color: whitesmoke;
+  cursor: not-allowed;
+}
+
+.event-rsvp:disabled:hover {
+  background-color: whitesmoke;
+}
+
 .event-rsvp:hover {
   background-color: rgba(255, 153, 0, 0.1);
 }
