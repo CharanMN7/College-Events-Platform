@@ -30,7 +30,7 @@
 
 // TheCard
 .card {
-  min-width: 300px;
+  min-width: 450px;
   padding: 1rem;
   border-radius: 1rem;
   background-color: whitesmoke;
@@ -44,7 +44,19 @@
 
   h3 {
     font-weight: 800;
+    font-size: 2rem;
     margin: 0.5rem 0;
+  }
+
+  img {
+    width: 150px;
+    height: 84px;
+    object-fit: cover;
+    object-position: top;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 1rem;
   }
 }
 
