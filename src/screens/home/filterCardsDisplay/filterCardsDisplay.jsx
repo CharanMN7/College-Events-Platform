@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./filterCardsDisplay.scss";
+import { Link } from "react-router-dom";
 import TheCard from "./TheCard";
 
 const FilterCardsDisplay = () => {
@@ -23,7 +24,10 @@ const FilterCardsDisplay = () => {
 
   return (
     <div className="card-display">
-      <h2>Latest Events</h2>
+      <div className="filter-heading-part">
+        <h2>Latest Events</h2>
+        <Link to="/all-events">View All Events</Link>
+      </div>
       {/* <div className="tags">
         {tags.map((tag) => (
           <span className="tag tech-tag" key={tag}>
