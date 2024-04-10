@@ -11,7 +11,11 @@ const NavBar = () => {
       <nav>
         <ul className="open-nav">
           <li>
-            <Link to="/admin">Admin</Link>
+            <Link to="/admin">
+              <span className="material-symbols-rounded">
+                admin_panel_settings
+              </span>
+            </Link>
           </li>
         </ul>
         <span className="material-symbols-rounded nav-menu">menu</span>

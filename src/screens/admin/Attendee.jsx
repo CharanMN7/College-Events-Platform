@@ -6,7 +6,6 @@ const Attendee = ({ name, email, date, cls }) => {
     <div className={cls}>
       <span>{name}</span>
       <span>{email}</span>
-      <span>{date}</span>
     </div>
   );
 };

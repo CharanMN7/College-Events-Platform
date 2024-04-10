@@ -85,12 +85,11 @@ app.post("/admin/event/:id", verifyJWT, async (req, res) => {
 });
 
 // saves new event data to the events collection
-app.put("/admin/create-event", verifyJWT, async (req, res) => {
+app.post("/admin/create-event", verifyJWT, async (req, res) => {
   const eventData = req.body;
+  const found = await Event.findOne({ title: eventData.title });
 
-  if (Event.findOne({ title: eventData.title })) {
-    res.send(`${eventData.title} already exists`);
-  } else {
+  if (!found) {
     const NewEvent = new Event({
       title: eventData.title,
       about: eventData.about,
@@ -104,9 +103,9 @@ app.put("/admin/create-event", verifyJWT, async (req, res) => {
       where: eventData.where,
       date: eventData.date,
     });
-
     await NewEvent.save();
-    res.send("Done!");
+  } else {
+    res.send(`${eventData.title} already exists`);
   }
 });
 

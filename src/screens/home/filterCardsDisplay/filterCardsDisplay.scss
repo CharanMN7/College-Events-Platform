@@ -2,10 +2,30 @@
 
 .card-display {
   padding: 1rem;
-  h2 {
-    margin: 0.5rem 0;
-    font-size: 2.5rem;
-    font-weight: 800;
+
+  .filter-heading-part {
+    @include flex(row, no);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    h2 {
+      margin: 0;
+      font-size: 3rem;
+      font-weight: 800;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+      background-color: black;
+      font-size: 1.2rem;
+      padding: 0.8rem;
+      border-radius: 0.4rem;
+      height: fit-content;
+      border: none;
+      cursor: pointer;
+    }
   }
 }
 
@@ -30,7 +50,7 @@
 
 // TheCard
 .card {
-  min-width: 300px;
+  min-width: 450px;
   padding: 1rem;
   border-radius: 1rem;
   background-color: whitesmoke;
@@ -44,7 +64,19 @@
 
   h3 {
     font-weight: 800;
+    font-size: 2rem;
     margin: 0.5rem 0;
+  }
+
+  img {
+    width: 150px;
+    height: 84px;
+    object-fit: cover;
+    object-position: top;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    border-radius: 1rem;
   }
 }
 

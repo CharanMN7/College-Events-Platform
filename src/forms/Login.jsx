@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import NavBar from "../reusableComponents/NavBar/NavBar";
 import "./forms.scss";
 import axios from "axios";
@@ -6,7 +5,6 @@ import { useContext } from "react";
 import LoginContext from "../utils/LoginContext";
 
 const Login = () => {
-  const navigate = useNavigate();
   const { loginStatus, theToken } = useContext(LoginContext);
   const [isLoggedIn, setIsLoggedIn] = loginStatus;
   const [token, setToken] = theToken;
