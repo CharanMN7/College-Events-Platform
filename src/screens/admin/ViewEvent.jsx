@@ -11,6 +11,7 @@ const ViewEvent = () => {
   const { loginStatus, theToken } = useContext(LoginContext);
   const [theEvent, setTheEvents] = useState({});
   const [attendees, setAttendees] = useState([]);
+  const viewTheEvent = `/event/${id}`;
 
   useEffect(() => {
     const fetchTheEvent = async () => {
@@ -35,7 +36,7 @@ const ViewEvent = () => {
           <div>
             <h1>{theEvent.title}</h1>
             <p>{theEvent.shortDesc}</p>
-            <Link className="view-event-btn">
+            <Link className="view-event-btn" to={viewTheEvent}>
               <span>View Event</span>
               <span className="material-symbols-rounded">chevron_right</span>
             </Link>
