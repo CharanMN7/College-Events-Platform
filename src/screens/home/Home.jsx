@@ -1,7 +1,7 @@
 import Carousel from "./carousel/Carousel";
 import NavBar from "../../reusableComponents/NavBar/NavBar";
 import FilterCardsDisplay from "./filterCardsDisplay/filterCardsDisplay";
-import RsvpForm from "../../popups/RsvpForm";
+import "../../index.scss";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <Carousel />
       <FilterCardsDisplay />
     </>
-    // <RsvpForm /> for now ...
   );
 };
+
 export default Home;

@@ -67,6 +67,17 @@
   cursor: pointer;
 }
 
+.event-rsvp:disabled {
+  color: grey;
+  border-color: grey;
+  background-color: whitesmoke;
+  cursor: not-allowed;
+}
+
+.event-rsvp:disabled:hover {
+  background-color: whitesmoke;
+}
+
 .event-rsvp:hover {
   background-color: rgba(255, 153, 0, 0.1);
 }
@@ -85,17 +96,4 @@
 
 .event-about {
   margin-bottom: 1rem;
-}
-
-// Event Ppl styles
-.event-ppl {
-  text-align: center;
-  width: fit-content;
-  margin: auto;
-  margin-top: 2rem;
-}
-
-.ppl-list {
-  @include flex(row, yes);
-  width: fit-content;
 }

@@ -5,8 +5,8 @@ header {
   @include flex(row, no);
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
-  background-color: #ffffff77;
+  padding: 0 2rem;
+  background-color: #00000050;
   position: sticky;
   top: 0;
   max-width: 100%;
@@ -14,7 +14,13 @@ header {
   @include blur();
   z-index: 99;
 
-  img {
+  a {
+    display: block;
+    margin-left: 0.5rem;
+    height: 75%;
+  }
+
+  a > img {
     height: 100%;
   }
 
@@ -35,7 +41,7 @@ header {
 
       li a {
         text-decoration: none;
-        color: black;
+        color: white;
         font-weight: 500;
         font-size: 1.2rem;
 
