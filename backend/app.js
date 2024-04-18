@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 const dotenv = require("dotenv").config();
 
 const app = express();
-const Login = require("./schemas/AdminModel");
 
 // Models
 const Event = require("./schemas/EventModel");
@@ -110,7 +109,21 @@ app.post("/admin/create-event", verifyJWT, async (req, res) => {
 });
 
 // updates the details of an existing event
-app.post("/admin/event/:id/update", verifyJWT, async (req, res) => {});
+app.post("/admin/update-event", verifyJWT, async (req, res) => {
+  const newData = req.body;
+  const event = await Event.findOne({ _id: newData._id });
+
+  event.title = newData.title;
+  event.about = newData.about;
+  event.bannerUrl = newData.bannerUrl;
+  event.mode = newData.mode;
+  event.shortDesc = newData.shortDesc;
+  event.tag = newData.tag;
+  event.date = newData.date;
+
+  await event.save();
+  res.send("Event info updated");
+});
 
 // gets the jwt token upon successful admin user verification (not robust)
 app.post("/admin/login", async (req, res) => {
@@ -144,66 +157,5 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`server running at http://localhost:${port}`);
 });
-
-//this api gets all the events from db(admin)
-app.get('/api/event',async(req,res)=>{
-    try{
-        const events=await Event.find({});
-        res.status(200).json(events);
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-
-});
-//this api gets id-specified event from db(admin)
-app.get('/api/events/:id',async(req,res)=>{
-    try{
-        const {id}=req.params;
-        const event=await Event.findById(id);
-        res.status(200).json(event);
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-
-});
-
-//this api creates an event(admin)
-app.post('/api/events',async (req,res)=>{
-    //console.log(req.body);
-    //res.send(req.body);
-    try{
-        const event=await Event.create(req.body);
-        res.status(200).json(event);
-
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-}
-);
-
-//this api gets all events from db(user)
-app.get('/api/users',async(req,res)=>{
-    try{
-        const users=await User.find({});
-        res.status(200).json(events);
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-
-});
-//this api gets id-specified event from db(user)
-app.get('/api/users/:id',async(req,res)=>{
-    try{
-        const {id}=req.params;
-        const user=await User.findById(id);
-        res.status(200).json(user);
-    }catch(error){
-        res.status(500).json({message:error.message});
-    }
-});
-
-
-
-
 
 module.exports = app;
