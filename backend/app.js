@@ -109,7 +109,21 @@ app.post("/admin/create-event", verifyJWT, async (req, res) => {
 });
 
 // updates the details of an existing event
-app.post("/admin/event/:id/update", verifyJWT, async (req, res) => {});
+app.post("/admin/update-event", verifyJWT, async (req, res) => {
+  const newData = req.body;
+  const event = await Event.findOne({ _id: newData._id });
+
+  event.title = newData.title;
+  event.about = newData.about;
+  event.bannerUrl = newData.bannerUrl;
+  event.mode = newData.mode;
+  event.shortDesc = newData.shortDesc;
+  event.tag = newData.tag;
+  event.date = newData.date;
+
+  await event.save();
+  res.send("Event info updated");
+});
 
 // gets the jwt token upon successful admin user verification (not robust)
 app.post("/admin/login", async (req, res) => {
