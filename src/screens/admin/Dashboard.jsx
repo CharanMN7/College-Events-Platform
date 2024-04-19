@@ -20,7 +20,6 @@ const Dashboard = () => {
 
       const events = await apiRes.data;
       setAllEvents(events);
-      console.log(allEvents);
     };
 
     fetchAllEvents();
