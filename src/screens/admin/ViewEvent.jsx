@@ -12,6 +12,7 @@ const ViewEvent = () => {
   const [theEvent, setTheEvents] = useState({});
   const [attendees, setAttendees] = useState([]);
   const viewTheEvent = `/event/${id}`;
+  const updateEvent = `/admin/update-event/${id}`;
 
   useEffect(() => {
     const fetchTheEvent = async () => {
@@ -46,7 +47,7 @@ const ViewEvent = () => {
 
         <div className="heading-part">
           <h1>Attendees</h1>
-          <Link>Update Event</Link>
+          <Link to={updateEvent}>Update Event</Link>
         </div>
 
         <div className="attendees">

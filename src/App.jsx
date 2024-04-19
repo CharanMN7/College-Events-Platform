@@ -50,16 +50,13 @@ function App() {
             <Route path="/admin/event/:id" element={<ViewEvent />} />
 
             <Route path="/all-events" element={<AllEvents />} />
-            {/*
-             **************
-             * update event route:
-             * <Route path="/admin/event/:id/update"
-             *   element={
-             *     isLoggedIn ? <CreateEvent operation="Update" /> : <Login />
-             *   }
-             * />
-             * ************
-             */}
+
+            <Route
+              path="/admin/update-event/:id"
+              element={
+                isLoggedIn ? <CreateEvent operation="Update" /> : <Login />
+              }
+            />
           </Routes>
         </QueryClientProvider>
       </LoginContext.Provider>
