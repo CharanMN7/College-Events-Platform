@@ -1,2 +1,1 @@
-# raghu-clubs
- 
+# College Events Platform
